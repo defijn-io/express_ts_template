@@ -33,10 +33,10 @@ This template serves as a comprehensive starting point for building Express-base
 
 ## Scripts 📜
 
-`build`: `npx tsc` - Compiles the TypeScript code.
-`start`: `node dist/server.js` - Starts the built application.
-`dev`: `nodemon src/server.ts` - Runs the application in development mode with hot reloading.
-`create:mvc`: Automates the creation of an MVC structure.
+-   `build`: `npx tsc` - Compiles the TypeScript code.
+-   `start`: `node dist/server.js` - Starts the built application.
+-   `dev`: `nodemon src/server.ts` - Runs the application in development mode with hot reloading.
+-   `create:mvc`: Automates the creation of an MVC structure.
 
 ## Exploring `server.ts`
 
