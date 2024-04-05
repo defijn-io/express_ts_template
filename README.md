@@ -2,17 +2,17 @@
 
 Welcome to the ultimate Express TypeScript Template, designed to jumpstart your backend projects with ease and efficiency! Tailored for developers by developers, this template leverages the power of Express in a TypeScript environment, offering a solid foundation for building robust and scalable applications.
 
-## Introduction
+## Introduction ⚡️
 
 This template serves as a comprehensive starting point for building Express-based applications using TypeScript. It simplifies the setup process, incorporating best practices and common middleware to get you up and running quickly. With a focus on security, performance, and developer experience, it includes everything you need to kick off your project on the right foot.
 
-## Unique Attributes:
+## Unique Attributes 🚨
 
 -   Type Safety: Leveraging TypeScript for a safer, more predictable development experience.
 -   Pre-configured Middleware: Essential middleware for security, logging, and CORS pre-setup.
 -   Development Efficiency: Custom scripts to streamline common tasks, from building to running the dev server.
 
-## Getting Started
+## Getting Started 🦅
 
 -   Clone the Repository: `git clone https://github.com/your-repo/express_ts_template.git`
 -   Install Dependencies: Run `npm install` or `yarn` in the project directory.
@@ -38,11 +38,11 @@ This template serves as a comprehensive starting point for building Express-base
 -   `dev`: `nodemon src/server.ts` - Runs the application in development mode with hot reloading.
 -   `create:mvc`: Automates the creation of an MVC structure.
 
-## Exploring `server.ts`
+## Exploring `server.ts` 🔬
 
 The server.ts file acts as the backbone of your Express application, orchestrating everything from configuring environment variables to defining middleware and starting the server. Let's break down each section:
 
-### Importing Modules
+### Importing Modules 🛠️
 
 ```typescript
 import express, { Express } from "express";
@@ -60,7 +60,7 @@ import nocache from "nocache";
 -   helmet: Helps secure your apps by setting various HTTP headers.
 -   nocache: Middleware to disable client-side caching.
 
-### Environment Variables
+### Environment Variables 💾
 
 ```typescript
 dotenv.config();
@@ -77,7 +77,7 @@ const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 -   Checks if the essential environment variables PORT and CLIENT_ORIGIN_URL are set, throwing an error if not.
 -   Parses the PORT environment variable to an integer and assigns it along with CLIENT_ORIGIN_URL to constants.
 
-### Express Application Initialization
+### Express Application Initialization 🔌
 
 ```typescript
 const app: Express = express();
@@ -90,7 +90,7 @@ app.set("json spaces", 2);
 -   Configures the app to parse JSON bodies in requests.
 -   Sets pretty-printing of JSON responses to 2 spaces.
 
-### App Configuration: Middleware
+### App Configuration: Middleware 🧰
 
 ```typescript
 app.use(
@@ -127,7 +127,7 @@ app.use(
 -   nocache: Disables client-side caching to prevent serving stale content.
 -   cors: Configures Cross-Origin Resource Sharing with the specified origin, allowed methods, headers, and max age for the preflight request.
 
-#### Helmet setup in more detail
+#### Helmet setup in more detail 🪖
 
 `helmet` is a collection of smaller middleware functions that set HTTP response headers. Since browsers have built-in security features controlled by these headers, configuring them properly can help protect your app from various web vulnerabilities. Here’s a breakdown of the configurations shown in the server.ts:
 
@@ -137,7 +137,7 @@ app.use(
 
 -   X-Frame-Options: The frameguard setting controls whether your content can be embedded in other sites. Setting the action to deny prevents anyone from framing your site, which helps mitigate clickjacking attacks.
 
-#### Cors setup in more detail
+#### Cors setup in more detail 🔐
 
 `cors` is a middleware that enables you to specify how your Express app should handle requests made from different origins. "Origin" here refers to the combination of protocol (HTTP/HTTPS), domain (or IP), and port from which a web page is served. CORS policies are a security feature enforced by browsers to prevent malicious websites from making requests to another domain without permission. Here’s what the configuration in the server.ts does:
 
@@ -149,7 +149,7 @@ app.use(
 
 -   maxAge: Indicates how long the results of a preflight request (which checks the CORS settings before sending the actual request) can be cached. The value is in seconds. Setting it to 86400 allows browsers to cache the preflight response for a day, reducing the need for preflight requests for subsequent requests.
 
-### Health Check Route
+### Health Check Route ⛑️
 
 ```typescript
 app.get("/", (req, res) => {
@@ -161,7 +161,7 @@ app.get("/", (req, res) => {
 
 -   Defines a simple GET route at the root (/) that responds with a JSON message indicating the server is running and healthy.
 
-### Guard Route
+### Guard Route 🧑‍🚒
 
 ```typescript
 app.use((req, res, next) => {
@@ -176,7 +176,7 @@ app.use((req, res, next) => {
 
 -   A middleware that catches any requests that don't match the defined routes and responds with a 404 error.
 
-### Starting the Server
+### Starting the Server 🏁
 
 ```typescript
 async function startServer() {
@@ -192,6 +192,6 @@ startServer();
 -   Uses app.listen() to bind and listen for connections on the defined port.
 -   This file effectively sets up the server with security best practices, logging, CORS configuration, and a basic health check route. It ensures a solid starting point for further development and expansion of routes and functionalities within the Express application.
 
-## Contributing
+## Contributing 🧩
 
 We welcome contributions! If you're looking to improve the template or add new features, please fork the repository and submit a pull request. Ensure your changes are well-documented and follow the existing code style.
