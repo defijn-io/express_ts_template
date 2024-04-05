@@ -1,40 +1,40 @@
 {
-  "name": "express_ts_template",
-  "version": "1.0.0",
-  "description": "Express Typescript Template",
-  "main": "src/server.ts",
-  "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts",
-    "create:mvc": "mkdir src/controllers src/routes src/services src/middleware src/config && touch src/controllers/index.ts src/routes/index.ts src/services/index.ts src/middleware/index.ts src/config/index.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "helmet": "^7.1.0",
-    "morgan": "^1.10.0",
-    "nocache": "^4.0.0",
-    "swagger-ui-express": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/morgan": "^1.9.9",
-    "@types/node": "^20.12.4",
-    "@types/swagger-ui-express": "^4.1.6",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
-    "eslint": "^8.57.0",
-    "nodemon": "^3.1.0",
-    "prettier": "3.2.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.4"
-  }
+    "name": "express_ts_template",
+    "version": "1.0.0",
+    "description": "Express Typescript Template",
+    "main": "src/server.ts",
+    "scripts": {
+        "build": "npx tsc",
+        "start": "node dist/server.js",
+        "dev": "nodemon src/server.ts",
+        "create:mvc": "mkdir src/controllers src/routes src/services src/middleware src/config && touch src/controllers/index.ts src/routes/index.ts src/services/index.ts src/middleware/index.ts src/config/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "helmet": "^7.1.0",
+        "morgan": "^1.10.0",
+        "nocache": "^4.0.0",
+        "swagger-ui-express": "^5.0.0"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^20.12.4",
+        "@types/swagger-ui-express": "^4.1.6",
+        "@typescript-eslint/eslint-plugin": "^7.5.0",
+        "@typescript-eslint/parser": "^7.5.0",
+        "eslint": "^8.57.0",
+        "nodemon": "^3.1.0",
+        "prettier": "3.2.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.4"
+    }
 }
