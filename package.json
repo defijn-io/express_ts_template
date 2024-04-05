@@ -2,7 +2,7 @@
   "name": "express_ts_template",
   "version": "1.0.0",
   "description": "Express Typescript Template",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
