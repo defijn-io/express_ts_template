@@ -4,16 +4,19 @@ set -e
 
 echo "Starting setup..."
 
-echo "Scaffolding base directories..."
+echo "📦 Installing base dependencies..."
+yarn
+echo "✅ Base dependencies installed."
+echo "⛩️ Creating project structure..."
 mkdir -p src/controllers src/routes src/services src/middleware src/config
 touch src/controllers/index.ts src/routes/index.ts src/services/index.ts src/middleware/index.ts src/config/index.ts
 
 # Ask the user if they want to add a database
-read -p "Do you want to add a database? (yes/no): " add_database
+read -p "🤔 Do you want to add a database? (yes/no): " add_database
 
 if [ "$add_database" == "yes" ]; then
   # Ask the user if they will use Prisma or Drizzle ORM
-  read -p "Will you use Prisma or Drizzle ORM? (prisma/drizzle): " orm_choice
+  read -p "🤔 Will you use Prisma or Drizzle ORM? (prisma/drizzle): " orm_choice
 
   # Check if docker-compose.yaml exists and contains "postgres"
   if [ -f "docker-compose.yaml" ] || [ -f "docker-compose.yml" ]; then
@@ -119,7 +122,7 @@ EOL
 fi
 
 # Ask the user if they need authentication
-read -p "Do you need authentication? (yes/no): " need_auth
+read -p "🤔 Do you need authentication? (yes/no): " need_auth
 
 if [ "$need_auth" == "yes" ]; then
   echo "Creating auth..."
@@ -127,5 +130,11 @@ if [ "$need_auth" == "yes" ]; then
   echo "Authentication setup complete."
 fi
 
-echo "Setup completed successfully."
-echo "To start the project, run: yarn dev"
+echo "🔥 Setup completed successfully."
+read -p "🤔 Do you want to start the project? (yes/no): " start_project
+if [ "$start_project" == "yes" ]; then
+  echo "🚀 Starting the project..."
+  yarn dev
+else
+  echo "👋 Okay! Run yarn dev to start when you are ready."
+fi
