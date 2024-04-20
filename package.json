@@ -7,7 +7,7 @@
         "build": "npx tsc",
         "start": "node dist/server.js",
         "dev": "nodemon src/server.ts",
-        "create:mvc": "mkdir src/controllers src/routes src/services src/middleware src/config && touch src/controllers/index.ts src/routes/index.ts src/services/index.ts src/middleware/index.ts src/config/index.ts"
+        "mk:setup": "chmod +x ./scripts/setup.sh && ./scripts/setup.sh"
     },
     "keywords": [],
     "author": "",
