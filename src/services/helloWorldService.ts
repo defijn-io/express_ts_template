@@ -1,3 +1,3 @@
 export async function helloWorldService() {
-    return "Hello Service 😎!";
+    return "Defijn Express TS Template 💙";
 }
