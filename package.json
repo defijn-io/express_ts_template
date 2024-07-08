@@ -6,8 +6,7 @@
     "scripts": {
         "build": "npx tsc",
         "start": "node dist/server.js",
-        "dev": "nodemon src/server.ts",
-        "mk:setup": "chmod +x ./scripts/setup.sh && ./scripts/setup.sh"
+        "dev": "nodemon src/server.ts"
     },
     "keywords": [],
     "author": "",
