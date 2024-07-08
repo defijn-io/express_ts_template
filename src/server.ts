@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import nocache from "nocache";
+import api from "./routes/api";
 
 dotenv.config();
 
@@ -69,7 +70,7 @@ app.get("/", (req, res) => {
  * Route Definitions Start
  * Add your routes below
  */
-
+app.use("/api", api);
 /**
  * Route Definitions End
  * Add your routes above
