@@ -1,1 +1,1 @@
-export * from "./helloWorldService";
+export * from "./example";

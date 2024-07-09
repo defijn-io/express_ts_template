@@ -1,1 +1,1 @@
-export { default as helloWorldController } from "./helloWorldController";
+export { default as example } from "./example";
