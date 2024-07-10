@@ -1,3 +1,3 @@
 export async function example() {
-    return "Defijn Express TS Template 💙";
+    return "Made with 💙 by Defijn";
 }
