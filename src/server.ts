@@ -8,6 +8,16 @@ import api from "./routes/api";
 
 dotenv.config();
 
+if (!process.env.POSTGRES_PASSWORD) {
+    throw new Error("Missing required environment variables");
+}
+
+if (process.env.POSTGRES_PASSWORD === "password") {
+    throw new Error(
+        "Do not use the default password. Please set a new password in the .env file. Remember to update the DATABASE_URL as well.",
+    );
+}
+
 if (!(process.env.PORT && process.env.CLIENT_ORIGIN_URL)) {
     throw new Error("Missing required environment variables");
 }
