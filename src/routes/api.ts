@@ -1,8 +1,8 @@
 import express from "express";
-import { example } from "../controllers";
+import { exampleController } from "../controllers";
 
 const api = express.Router();
 
-api.use("/example", example);
+api.use("/example", exampleController);
 
 export default api;

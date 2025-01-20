@@ -1,3 +1,5 @@
-export async function example() {
+async function example() {
     return "Made with 💙 by Defijn";
 }
+
+export { example };
