@@ -1,1 +1,0 @@
-export { exampleController } from "./example";

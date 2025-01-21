@@ -1,5 +1,5 @@
 import express from "express";
-import { exampleController } from "../controllers";
+import { exampleController } from "@/controllers/exampleController";
 
 const api = express.Router();
 

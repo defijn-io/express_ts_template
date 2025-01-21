@@ -4,7 +4,11 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import nocache from "nocache";
-import api from "./routes/api";
+import api from "@/routes/api";
+import { StatusCodes } from "http-status-codes";
+import { errorMiddleware } from "@/middleware/errorMiddleware";
+import logger from "./utils/logger";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -21,81 +25,80 @@ const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
 
 const app: Express = express();
 
-app.use(express.json());
-app.set("json spaces", 2);
-
-/**
- * App Configuration
- */
-
-// Security headers
-app.use(
-    helmet({
-        hsts: {
-            maxAge: 31536000,
-        },
-        contentSecurityPolicy: {
-            useDefaults: false,
-            directives: {
-                "default-src": ["'none'"],
-                "frame-ancestors": ["'none'"],
-            },
-        },
-        frameguard: {
-            action: "deny",
-        },
-    }),
-);
-
-// Logger
-app.use(morgan("combined"));
-
-// Disable caching
-app.use(nocache());
-
-// Cors settings
-app.use(
-    cors({
-        origin: CLIENT_ORIGIN_URL,
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Authorization", "Content-Type"],
-        credentials: true,
-        maxAge: 86400,
-    }),
-);
-
-// Health Check
-app.get("/", (req, res) => {
-    res.json({
-        message: "🎉 Express is running and healthy",
-    });
-});
-
-/**
- * Route Definitions Start
- * Add your routes below
- */
-app.use("/api", api);
-/**
- * Route Definitions End
- * Add your routes above
- */
-
-// Guard route
-app.use((req, res, next) => {
-    const error = {
-        status: 404,
-        message: "Route not found",
-    };
-
-    next(error);
-});
-
-// Server starter - You can use this to start any other services that needs to be running before the server starts
 async function startServer() {
-    app.listen(PORT, () => {
-        console.log(`🚀 Server listening on port ${PORT}`);
-    });
+    try {
+        logger.info("Starting server initialization");
+
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: true }));
+        app.use(cookieParser());
+        app.set("json spaces", 2);
+
+        // Security headers
+        app.use(helmet());
+
+        // Logger
+        app.use(morgan("combined"));
+
+        // Disable caching
+        app.use(nocache());
+
+        // Cors settings
+        app.use(
+            cors({
+                origin: CLIENT_ORIGIN_URL,
+                methods: ["GET", "POST", "PUT", "DELETE"],
+                allowedHeaders: ["Authorization", "Content-Type"],
+                credentials: true,
+                maxAge: 86400,
+            }),
+        );
+
+        // Using Redis? Connect to Redis here
+        logger.info("Redis connection established");
+
+        // Rate limiting? Set up rate limiting here
+        logger.info("Rate limiting initialized");
+
+        // Metics? Set up metrics here
+        logger.info("Metrics initialized");
+
+        app.get("/", (req, res) => {
+            res.status(StatusCodes.OK).json({
+                message: "🎉 Express is running and healthy",
+                request: req.headers,
+            });
+        });
+
+        // API routes
+        app.use("/api", api);
+
+        // Guard route
+        app.use((req, res, next) => {
+            const error = {
+                status: StatusCodes.NOT_FOUND,
+                req: req.header,
+                res: res.header,
+                message: "Route not found",
+            };
+            next(error);
+        });
+
+        app.use(errorMiddleware);
+
+        app.listen(PORT, () => {
+            logger.info(`🚀  Server successfully started on port ${PORT}`);
+        });
+    } catch (error) {
+        logger.error("‼️  Error starting server: ", error);
+        process.exit(1);
+    }
 }
 
 startServer();
+process.on("SIGINT", () => {
+    logger.info("Shutting down...");
+    // If using posthog, initialize it in the startServer function and ensure you shutdown it here
+    // posthog.shutdown();
+    process.exit();
+});

@@ -9,7 +9,14 @@
         ],
         // Output settings
         "outDir": "./dist",
-        "rootDir": "./src",
+        // Base URL and paths
+        "rootDir": ".",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
         // Strict type-checking options
         "strict": true,
         "noImplicitAny": true,
@@ -25,7 +32,6 @@
         "noFallthroughCasesInSwitch": true,
         "skipLibCheck": true,
         // Module resolution
-        "baseUrl": "./src",
         "esModuleInterop": true,
         "resolveJsonModule": true,
         // Source map and declaration options
